@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatme</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+<body>
+    <h1>chatMe:)</h1>
+    <form action="/chats/new" method="get">
+        <button class="newchat">New Chat</button>
+    </form>
+    <% for(chat of chats){ %>
+        <div class="chat">
+        <h4>From:@<%= chat.from %></h4>
+        <div class="msg">
+            <p><%= chat.msg %> <i class="fa-solid fa-check-double" id="logo"></i></p>
+            <form action="/chats/<%= chat._id %>/edit" method="get">
+                <button id="edit">Edit</button>
+            </form>
+            <form action="/chats/<%= chat._id %>/delete?_method=DELETE" method="POST">
+                <button id="delete">Delete</button>
+            </form>
+            
+        </div>
+        <h4>Recived by:@<%= chat.to %></h4>
+        <p id="time"><%= chat.createdAt.toString().split(" ")[4]%></p>
+        <p id="date"><%= chat.createdAt.toString().split(" ").slice(0,4).join("-")%></p>
+        </div>
+        <% } %>
+</body>
+</html>

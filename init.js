@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import {Chat} from "./models/chat.js";
 
 async function main(){
-    await mongoose.connect("mongodb://127.0.0.1:27017/chatme");
+    await mongoose.connect("mongodb://127.0.0.1:27017/fakewp");
 }
 main()
 .then((res)=>{
